@@ -2,7 +2,6 @@
 
 if [ "$(/opt/nessus/sbin/nessuscli fix --list | grep 'do not exist yet' | wc -l)" -ne "0" ];then
     echo "-- New Nessus Installation, Attempting to license it using the provided configuration"
-    echo "Y" | /opt/nessus/sbin/nessuscli fix --reset
     if [ "$(/opt/nessus/sbin/nessuscli managed status | grep 'Linked to' | wc -l)" == "0" ] && [ -n "${LINKING_KEY}" ];then
         echo "-- Linking Scanner to Tenable.io"
         args=" --key=${LINKING_KEY}"
